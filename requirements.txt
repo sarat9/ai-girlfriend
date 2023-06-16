@@ -1,0 +1,5 @@
+langchain
+playsound
+pyobjc
+flask
+flask-cors
