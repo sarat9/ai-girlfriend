@@ -1,6 +1,8 @@
 # AI-Girlfriend
 AI-Girlfriend is a simple interactive AI application that uses LangChain and OpenAI technologies to provide conversational experiences.
 
+- Interactive Conversations from Girl Friend
+- Voice-based responses from Girl Friend
 
 
 # Run
@@ -33,3 +35,6 @@ python ai-gf.py
 AI-Girlfriend utilizes the following technologies and libraries:
 - LangChain
 - OpenAI
+- Eleven Labs
+
+The App uses LangChain and OpenAI technologies to provide conversational experiences and uses ElevenLabs API to convert text to speech.
