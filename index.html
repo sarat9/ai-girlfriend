@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AI Girlfriend</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: #f1f1f1;
+		}
+
+		.container {
+			max-width: 600px;
+			margin: 20px auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+		}
+
+		.title {
+			text-align: center;
+			font-size: 24px;
+			font-weight: bold;
+			color: #4caf50;
+			margin-bottom: 10px;
+		}
+
+		.description {
+			text-align: center;
+			font-size: 16px;
+			color: #777;
+			margin-bottom: 20px;
+		}
+
+		.chat {
+			margin-bottom: 20px;
+			overflow-y: auto;
+            min-height: 500px;
+			height: 90%;
+		}
+
+		.user-message-container {
+			display: flex;
+			justify-content: flex-end;
+			margin-bottom: 10px;
+		}
+
+		.user-message {
+			background-color: #dcf8c6;
+			border-radius: 20px;
+			padding: 10px;
+			margin-left: 10px;
+		}
+
+		.bot-message-container {
+			display: flex;
+			justify-content: flex-start;
+			margin-bottom: 10px;
+		}
+
+		.bot-message {
+			background-color: #e92a914f;
+			border-radius: 20px;
+			padding: 10px;
+			margin-right: 10px;
+		}
+
+		.message-name {
+            font-weight: bold;
+            font-size: 11px;
+            color: darkolivegreen;
+            margin-bottom: 5px;
+		}
+
+		.input-container {
+			display: flex;
+			margin-top: 20px;
+		}
+
+		.input-field {
+			flex-grow: 1;
+			border: 1px solid grey;
+			border-radius: 5px;
+			padding: 10px;
+			font-size: 14px;
+		}
+
+		.send-button {
+			border: none;
+			border-radius: 5px;
+			padding: 10px 20px;
+			background-color: #4CAF50;
+			color: #fff;
+			cursor: pointer;
+			font-size: 14px;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="title">AI Girlfriend</div>
+		<div class="description">Experience the future of conversations!</div>
+		<hr>
+
+		<div class="chat" id="chat"></div>
+		<div class="input-container">
+			<input type="text" id="input" class="input-field" placeholder="Type your message...">
+			<button onclick="send()" class="send-button">Send</button>
+		</div>
+	</div>
+
+	<script>
+		function send() {
+			var input = document.getElementById("input").value;
+			document.getElementById("input").value = "";
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET", "http://localhost:5000/chat?input=" + input);
+			xhr.onload = function() {
+				var response = JSON.parse(xhr.responseText);
+				var chat = document.getElementById("chat");
+
+                var userMessageContainer = document.createElement("div");
+				userMessageContainer.classList.add("user-message-container");
+
+				var userMessage = document.createElement("div");
+				userMessage.classList.add("user-message");
+				var userName = document.createElement("div");
+				userName.classList.add("message-name");
+				userName.innerText = "You";
+				userMessage.appendChild(userName);
+				var userContent = document.createElement("div");
+				userContent.innerText = input;
+				userMessage.appendChild(userContent);
+
+				var botMessageContainer = document.createElement("div");
+				botMessageContainer.classList.add("bot-message-container");
+
+				var botMessage = document.createElement("div");
+				botMessage.classList.add("bot-message");
+				var botName = document.createElement("div");
+				botName.classList.add("message-name");
+				botName.innerText = "AI Girlfriend";
+				botMessage.appendChild(botName);
+				var botContent = document.createElement("div");
+				botContent.innerText = response.message;
+				botMessage.appendChild(botContent);
+
+				userMessageContainer.appendChild(userMessage);
+				botMessageContainer.appendChild(botMessage);
+
+				chat.appendChild(userMessageContainer);
+				chat.appendChild(botMessageContainer);
+
+				chat.scrollTop = chat.scrollHeight;
+			};
+			xhr.send();
+		}
+	</script>
+</body>
+</html>
