@@ -11,6 +11,8 @@ Run the AI-Girlfriend application:
 python ai-gf.py
 ```
 
+![image](https://github.com/sarat9/ai-girlfriend/assets/17333491/6c0d830c-bf26-4a59-80a3-bc90f481a81e)
+
 
 ## Installation
 Before running the application, ensure that you have the following:
