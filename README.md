@@ -40,3 +40,6 @@ AI-Girlfriend utilizes the following technologies and libraries:
 - Eleven Labs
 
 The App uses LangChain and OpenAI technologies to provide conversational experiences and uses ElevenLabs API to convert text to speech.
+
+
+<a href="https://www.buymeacoffee.com/sarat" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
